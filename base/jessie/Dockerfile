@@ -1,11 +1,18 @@
 
 # Contains pyenv, git, curl, and build requirements ready to use
 
-FROM buildpack-deps:jessie
+FROM debian:jessie
 MAINTAINER nlr06886@gmail.com
 
-# Install pyenv, and the python version for this app
-RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer -o /pyenv-installer && \
+# remove existing python versions
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		ca-certificates \
+		libsqlite3-0 \
+		libssl1.0.0 \
+    curl \
+    git && \
+    rm -rf /var/lib/apt/lists/* && \
+    curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer -o /pyenv-installer && \
     /bin/bash /pyenv-installer && \
     rm /pyenv-installer && \
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile && \
