@@ -1,7 +1,5 @@
 
-# Contains pyenv, git, curl, and build requirements ready to use
-
-FROM rothnic/pyenv:jessie-base-latest
+FROM rothnic/pyenv:base-latest
 MAINTAINER nlr06886@gmail.com
 
 # remove existing python versions

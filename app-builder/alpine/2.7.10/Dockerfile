@@ -1,5 +1,6 @@
 FROM rothnic/pyenv:alpine-build-deps-latest
 
+RUN pyenv install 2.7.10
 RUN pip install wheel
 
 ENV WHEELHOUSE=/wheelhouse
